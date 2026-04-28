@@ -1,0 +1,18 @@
+.DS_Store
+
+# .NET
+**/bin/
+**/obj/
+
+# Node/Vite
+**/node_modules/
+**/dist/
+
+# env files
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/

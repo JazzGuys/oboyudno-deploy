@@ -1,0 +1,97 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: oboyudno_backend
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:5021
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=oboyudno;Username=admin;Password=admin
+      - S3__ServiceUrl=http://minio:9000
+      - S3__PublicUrl=http://localhost:9000
+      - S3__AccessKey=admin
+      - S3__SecretKey=admin123
+      - S3__BucketName=videos
+    ports:
+      - "5021:5021"
+    depends_on:
+      - db
+      - minio
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: oboyudno_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  migrations:
+    image: mcr.microsoft.com/dotnet/sdk:10.0
+    working_dir: /src
+    volumes:
+      - ./backend:/src
+      - nuget_cache:/root/.nuget/packages
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=oboyudno;Username=admin;Password=admin
+    command: >
+      sh -c "dotnet restore Backend.Api/Backend.Api.csproj &&
+              dotnet tool install --global dotnet-ef &&
+              export PATH=$$PATH:/root/.dotnet/tools &&
+              dotnet ef database update --project Backend.Infrastructure --startup-project Backend.Api"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: oboyudno_db
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=oboyudno
+    ports:
+      - "5433:5432"
+    volumes:
+      - "pg_data:/var/lib/postgresql/data"
+
+  minio:
+    image: minio/minio
+    container_name: oboyudno_minio
+    restart: always
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=admin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+  minio_init:
+    image: minio/mc
+    container_name: oboyudno_minio_init
+    depends_on:
+      - minio
+    restart: "no"
+    entrypoint: >
+      /bin/sh -c "
+      until /usr/bin/mc alias set local http://minio:9000 admin admin123; do
+        echo 'waiting for minio...';
+        sleep 2;
+      done;
+      /usr/bin/mc mb --ignore-existing local/videos;
+      /usr/bin/mc anonymous set download local/videos;
+      "
+
+volumes:
+  pg_data:
+  minio_data:
+  nuget_cache:
