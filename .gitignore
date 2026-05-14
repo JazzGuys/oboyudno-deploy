@@ -16,3 +16,4 @@
 # IDE
 .vscode/
 .idea/
+certbot/
