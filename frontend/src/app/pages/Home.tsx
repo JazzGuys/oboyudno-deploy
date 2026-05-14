@@ -59,16 +59,16 @@ const pricing = [
   },
   {
     name: "Про",
-    price: "1 ₽",
+    price: "200 ₽",
     period: "в месяц",
     desc: "Для активных фрилансеров",
     features: ["Безлимит сделок", "Видеозапись до 30 мин", "Хранение 2 года", "PDF + электронная подпись", "Уведомления контрагенту", "Приоритетная поддержка"],
-    cta: "Попробовать 7 дней",
+    cta: "Попробовать 30 дней бесплатно",
     highlight: true,
   },
   {
     name: "Бизнес",
-    price: "2 ₽",
+    price: "5900 ₽",
     period: "в месяц",
     desc: "Для команд и агентств",
     features: ["Всё из Про", "До 10 пользователей", "Безлимитное хранение", "API-интеграция"],
@@ -96,16 +96,16 @@ export function Home() {
                 </div>
 
                 <h1
-                    className="text-[50px] text-[#0D0D14] mb-5"
+                    className="text-4xl md:text-[50px] text-[#0D0D14] mb-5"
                     style={{ fontWeight: 700, lineHeight: "1.1", letterSpacing: "-0.03em" }}
                 >
-                  Договор за &nbsp;5 минут{" "}
-                  <span className="text-[#5048E5] text-[40px] md:text-[40px] block"> С видеодоказательством </span>
+                  Договор за&nbsp;5 минут{" "}
+                  <span className="text-[#5048E5] text-2xl md:text-[40px] block"> С видеодоказательством </span>
                 </h1>
 
                 <p className="text-[#6B7280] text-lg mb-8 leading-relaxed max-w-lg">
                   «Обоюдно» помогает заказчикам и исполнителям фиксировать договорённости на видео.
-                  Никаких споров — всё записано, зашифровано и хранится под защитой.
+                  Никаких споров - всё записано, зашифровано и хранится под защитой
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3 mb-10">
@@ -157,8 +157,7 @@ export function Home() {
                           <Video size={16} className="text-white" />
                         </div>
                         <div>
-                          <p className="text-xs text-white/60 mb-0.5">Видеозапись</p>
-                          <p className="text-sm text-white" style={{ fontWeight: 500 }}>привет.mp4 · 0:32</p>
+                          <p className="text-sm text-white" style={{ fontWeight: 500 }}>Видео.mp4 · 0:32</p>
                         </div>
                         <div className="ml-auto w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                           <div className="w-0 h-0 border-y-[5px] border-y-transparent border-l-[8px] border-l-white ml-0.5" />
@@ -287,7 +286,7 @@ export function Home() {
                   >
                     {plan.highlight && (
                         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-[#0D0D14] text-xs px-3 py-1 rounded-full" style={{ fontWeight: 600 }}>
-                          Популярный
+                          Выгодный
                         </div>
                     )}
                     <div className="mb-6">
@@ -327,6 +326,8 @@ export function Home() {
           </div>
         </section>
 
+
+
         <section className="py-8 px-6 max-w-6xl mx-auto mb-16">
           <div className="relative overflow-hidden bg-[#0D0D14] rounded-3xl px-10 py-14 text-center">
             <div className="absolute inset-0 bg-gradient-to-br from-[#5048E5]/40 via-transparent to-[#7C3AED]/20" />
@@ -341,14 +342,24 @@ export function Home() {
               <p className="text-white/50 mb-8 max-w-md mx-auto">
                 Присоединитесь к тысячам фрилансеров и заказчиков,<br />которые уже защитили свои сделки
               </p>
-              <Link
-                  to="/auth?tab=register"
-                  className="inline-flex items-center gap-2 bg-white text-[#0D0D14] px-8 py-3 rounded-xl hover:bg-[#F7F8FA] transition-all"
-                  style={{ fontWeight: 600 }}
-              >
-                Зарегистрироваться бесплатно
-                <ArrowRight size={15} />
-              </Link>
+              <div className="flex flex-col items-center gap-3">
+                <Link
+                    to="/auth?tab=register"
+                    className="inline-flex items-center gap-2 bg-white text-[#0D0D14] px-8 py-3 rounded-xl hover:bg-[#F7F8FA] transition-all"
+                    style={{ fontWeight: 600 }}
+                >
+                  Зарегистрироваться бесплатно
+                  <ArrowRight size={15} />
+                </Link>
+                <a
+                    href="https://tally.so/r/xXNvEG"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center bg-white text-[#0D0D14] px-6 py-3 rounded-xl border border-[#E8E9F0] hover:border-[#5048E5]/30 transition-all shadow-sm"
+                >
+                  Обратная связь
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -359,11 +370,11 @@ export function Home() {
               <div className="flex items-center gap-2.5">
                 <span className="text-sm text-[#0D0D14]" style={{ fontWeight: 600 }}>«Обоюдно»</span>
               </div>
-              <p className="text-xs text-[#8B8FA8]">© 2026 «Обоюдно». Все права защищены.</p>
+              <p className="text-xs text-[#8B8FA8]">© 2025-2026 «Обоюдно». Все права защищены.</p>
               <div className="flex gap-6">
-                {["Политика", "Условия", "Поддержка", "API"].map((l) => (
-                    <span key={l} className="text-xs text-[#8B8FA8]">{l}</span>
-                ))}
+                <Link to="/policy" className="text-xs text-[#8B8FA8] hover:text-[#0D0D14] transition-colors">Политика</Link>
+                <Link to="/conditions" className="text-xs text-[#8B8FA8] hover:text-[#0D0D14] transition-colors">Условия</Link>
+                <a href="https://t.me/defjalox" target="_blank" rel="noreferrer" className="text-xs text-[#8B8FA8] hover:text-[#0D0D14] transition-colors">Поддержка</a>
               </div>
             </div>
           </div>

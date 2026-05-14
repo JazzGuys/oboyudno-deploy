@@ -803,14 +803,12 @@ export function DealDetail() {
   return (
       <div className="min-h-screen bg-[#F7F8FA] flex">
         <aside className="w-[220px] bg-white border-r border-[#E8E9F0] flex flex-col min-h-screen sticky top-0 shrink-0">
-          <div className="px-5 py-5 border-b border-[#E8E9F0]">
+          <div className="px-5 h-[68px] border-b border-[#E8E9F0] flex items-center">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-[8px] bg-[#5048E5] flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8L6.5 11.5L13 4.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <div className="w-7 h-7 rounded-[8px] bg-[#5048E5] flex items-center justify-center shadow-[0_2px_8px_rgba(80,72,229,0.3)]">
+                <img src="/src/app/components/ui/logo.svg" alt="Логотип" className="w-full h-full object-contain" />
               </div>
-              <span className="text-[#0D0D14] text-sm" style={{ fontWeight: 600 }}>«Обоюдно»</span>
+              <span className="text-[#0D0D14] text-sm" style={{ fontWeight: 600 }}>Обоюдно</span>
             </Link>
           </div>
           <div className="p-4 flex-1">
@@ -825,7 +823,7 @@ export function DealDetail() {
         </aside>
 
         <main className="flex-1 min-w-0">
-          <div className="bg-white border-b border-[#E8E9F0] px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+          <div className="bg-white border-b border-[#E8E9F0] px-8 h-[68px] flex items-center justify-between sticky top-0 z-10">
             <div className="flex items-center gap-3">
               <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm shrink-0"
