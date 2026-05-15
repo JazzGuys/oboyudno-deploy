@@ -353,8 +353,8 @@ export function Profile() {
 
   return (
     <div className="min-h-screen bg-[#F7F8FA]">
-      <div className="max-w-5xl mx-auto px-6 py-8">
-        <div className="flex items-center justify-between gap-4 mb-6">
+      <div className="max-w-5xl mx-auto px-4 md:px-6 py-4 md:py-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <Link
             to="/dashboard"
             className="inline-flex items-center gap-1.5 text-sm text-[#8B8FA8] hover:text-[#0D0D14] transition-colors"
@@ -364,18 +364,18 @@ export function Profile() {
           </Link>
 
           <form onSubmit={handleSearch} className="flex items-center gap-2">
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial">
               <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#C4C6D3]" />
               <input
                 value={searchUsername}
                 onChange={(e) => setSearchUsername(e.target.value)}
                 placeholder="username профиля"
-                className="w-64 bg-white border border-[#E8E9F0] rounded-xl pl-8 pr-3 py-2 text-sm text-[#0D0D14] placeholder-[#C4C6D3] focus:outline-none focus:border-[#5048E5]"
+                className="w-full sm:w-64 bg-white border border-[#E8E9F0] rounded-xl pl-8 pr-3 py-2 text-sm text-[#0D0D14] placeholder-[#C4C6D3] focus:outline-none focus:border-[#5048E5]"
               />
             </div>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#5048E5] text-white rounded-xl text-sm hover:bg-[#4338CA] transition-colors"
+              className="px-4 py-2 bg-[#5048E5] text-white rounded-xl text-sm hover:bg-[#4338CA] transition-colors shrink-0"
             >
               Открыть
             </button>

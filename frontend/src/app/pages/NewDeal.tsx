@@ -248,11 +248,18 @@ export function NewDeal() {
 
   return (
       <div className="min-h-screen bg-[#F7F8FA] flex">
-        <aside className="w-[260px] bg-white border-r border-[#E8E9F0] flex flex-col min-h-screen sticky top-0 shrink-0">
+        <aside className="hidden lg:flex w-[260px] bg-white border-r border-[#E8E9F0] flex-col min-h-screen sticky top-0 shrink-0">
           <div className="px-5 h-[68px] border-b border-[#E8E9F0] flex items-center">
             <Link to="/" className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-[8px] bg-[#5048E5] flex items-center justify-center">
-                <img src="/src/app/components/ui/logo.svg" className="w-full h-full object-contain"  alt={"logo"}/>
+                <svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="720" height="720" transform="matrix(-1 0 0 1 720 0)" fill="#5048E5"/>
+                  <path d="M480 353.723C480 334.393 464.33 318.723 445 318.723H275C255.67 318.723 240 334.393 240 353.723C240 373.053 255.67 388.723 275 388.723H445C464.33 388.723 480 373.053 480 353.723Z" fill="#D9D9D9"/>
+                  <path d="M340.797 516.706C368.134 544.042 412.455 544.042 439.792 516.706L560 396.497C532.663 369.161 488.342 369.161 461.005 396.497L340.797 516.706Z" fill="#D9D9D9"/>
+                  <path d="M153.797 310.706C181.134 338.042 225.455 338.042 252.792 310.706L373 190.497C345.663 163.161 301.342 163.161 274.005 190.497L153.797 310.706Z" fill="#D9D9D9"/>
+                  <path d="M466.334 381.836C493.671 354.499 493.671 310.177 466.334 282.841L370.875 187.381C357.207 173.713 335.046 173.713 321.378 187.381C307.709 201.05 307.709 223.21 321.378 236.879L466.334 381.836Z" fill="#D9D9D9"/>
+                  <path d="M397.083 523.087C410.752 509.419 410.752 487.258 397.083 473.589L252.126 328.633C224.79 355.969 224.79 400.291 252.126 427.628L347.586 523.087C361.254 536.755 383.415 536.755 397.083 523.087Z" fill="#D9D9D9"/>
+                </svg>
               </div>
               <span className="text-[#0D0D14] text-sm" style={{ fontWeight: 600 }}>Обоюдно</span>
             </Link>
@@ -338,20 +345,30 @@ export function NewDeal() {
           </div>
         </aside>
 
-        <main className="flex-1 flex flex-col">
-          <div className="bg-white border-b border-[#E8E9F0] px-8 h-[68px] flex items-center justify-between">
+        <main className="flex-1 flex flex-col min-w-0">
+          <div className="lg:hidden bg-white border-b border-[#E8E9F0] px-4 h-[60px] flex items-center justify-between sticky top-0 z-20">
+            <Link to="/dashboard" className="flex items-center gap-2 text-[#8B8FA8]">
+              <ArrowLeft size={18} />
+              <span className="text-[#0D0D14] text-sm font-semibold">Новая сделка</span>
+            </Link>
+            <div className="text-[11px] text-[#8B8FA8] font-medium bg-[#F7F8FA] px-2 py-1 rounded-lg border border-[#E8E9F0]">
+              Шаг {step}/4
+            </div>
+          </div>
+
+          <div className="bg-white border-b border-[#E8E9F0] px-4 md:px-8 h-[68px] flex items-center justify-between">
             <div>
-              <p className="text-xs text-[#8B8FA8] mb-0.5">
-                Шаг {step} из {steps.length} — {steps[step - 1].label}
+              <p className="text-[10px] md:text-xs text-[#8B8FA8] mb-0.5">
+                Шаг {step} из {steps.length} — <span className="hidden md:inline">{steps[step - 1].label}</span><span className="md:hidden">{steps[step - 1].desc}</span>
               </p>
-              <h1 className="text-lg text-[#0D0D14]" style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>
+              <h1 className="text-base md:text-lg text-[#0D0D14]" style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>
                 Новая сделка
               </h1>
             </div>
-            <div className="flex items-center gap-2 text-xs text-[#8B8FA8]">
+            <div className="flex items-center gap-1.5 md:gap-2 text-xs text-[#8B8FA8]">
               {steps.map((s, i) => (
-                  <div key={s.id} className="flex items-center gap-1.5">
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] ${
+                  <div key={s.id} className="flex items-center gap-1 md:gap-1.5">
+                    <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[9px] md:text-[10px] ${
                         s.id < step ? "bg-[#5048E5] text-white" :
                             s.id === step ? "border-2 border-[#5048E5] text-[#5048E5]" :
                                 "border-2 border-[#E8E9F0] text-[#C4C6D3]"
@@ -359,14 +376,14 @@ export function NewDeal() {
                       {s.id < step ? <Check size={10} /> : s.id}
                     </div>
                     {i < steps.length - 1 && (
-                        <div className={`w-8 h-px ${s.id < step ? "bg-[#5048E5]" : "bg-[#E8E9F0]"}`} />
+                        <div className={`w-4 md:w-8 h-px ${s.id < step ? "bg-[#5048E5]" : "bg-[#E8E9F0]"}`} />
                     )}
                   </div>
               ))}
             </div>
           </div>
 
-          <div className="flex-1 p-8 max-w-2xl w-full">
+          <div className="flex-1 p-4 md:p-8 max-w-2xl w-full mx-auto">
             {step === 1 && (
                 <div>
                   <div className="bg-white border border-[#E8E9F0] rounded-2xl p-6 mb-4">

@@ -323,11 +323,18 @@ export function Dashboard() {
 
   return (
       <div className="min-h-screen bg-[#F7F8FA] flex">
-        <aside className="w-[220px] bg-white border-r border-[#E8E9F0] flex flex-col min-h-screen sticky top-0 shrink-0">
+        <aside className="hidden md:flex w-[220px] bg-white border-r border-[#E8E9F0] flex-col min-h-screen sticky top-0 shrink-0">
           <div className="px-5 h-[68px] border-b border-[#E8E9F0] flex items-center">
             <Link to="/" className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-[8px] bg-[#5048E5] flex items-center justify-center shadow-[0_2px_8px_rgba(80,72,229,0.3)]">
-                <img src="/src/app/components/ui/logo.svg" alt="Логотип" className="w-full h-full object-contain" />
+                <svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="720" height="720" transform="matrix(-1 0 0 1 720 0)" fill="#5048E5"/>
+                  <path d="M480 353.723C480 334.393 464.33 318.723 445 318.723H275C255.67 318.723 240 334.393 240 353.723C240 373.053 255.67 388.723 275 388.723H445C464.33 388.723 480 373.053 480 353.723Z" fill="#D9D9D9"/>
+                  <path d="M340.797 516.706C368.134 544.042 412.455 544.042 439.792 516.706L560 396.497C532.663 369.161 488.342 369.161 461.005 396.497L340.797 516.706Z" fill="#D9D9D9"/>
+                  <path d="M153.797 310.706C181.134 338.042 225.455 338.042 252.792 310.706L373 190.497C345.663 163.161 301.342 163.161 274.005 190.497L153.797 310.706Z" fill="#D9D9D9"/>
+                  <path d="M466.334 381.836C493.671 354.499 493.671 310.177 466.334 282.841L370.875 187.381C357.207 173.713 335.046 173.713 321.378 187.381C307.709 201.05 307.709 223.21 321.378 236.879L466.334 381.836Z" fill="#D9D9D9"/>
+                  <path d="M397.083 523.087C410.752 509.419 410.752 487.258 397.083 473.589L252.126 328.633C224.79 355.969 224.79 400.291 252.126 427.628L347.586 523.087C361.254 536.755 383.415 536.755 397.083 523.087Z" fill="#D9D9D9"/>
+                </svg>
               </div>
               <span className="text-[#0D0D14] text-sm" style={{ fontWeight: 600 }}>Обоюдно</span>
             </Link>
@@ -387,7 +394,31 @@ export function Dashboard() {
         </aside>
 
         <main className="flex-1 min-w-0">
-          <div className="bg-white border-b border-[#E8E9F0] px-8 h-[68px] flex items-center justify-between sticky top-0 z-10">
+          <div className="md:hidden bg-white border-b border-[#E8E9F0] px-4 h-[60px] flex items-center justify-between sticky top-0 z-20">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-[8px] bg-[#5048E5] flex items-center justify-center shadow-[0_2px_8px_rgba(80,72,229,0.3)]">
+                <svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="720" height="720" transform="matrix(-1 0 0 1 720 0)" fill="#5048E5"/>
+                  <path d="M480 353.723C480 334.393 464.33 318.723 445 318.723H275C255.67 318.723 240 334.393 240 353.723C240 373.053 255.67 388.723 275 388.723H445C464.33 388.723 480 373.053 480 353.723Z" fill="#D9D9D9"/>
+                  <path d="M340.797 516.706C368.134 544.042 412.455 544.042 439.792 516.706L560 396.497C532.663 369.161 488.342 369.161 461.005 396.497L340.797 516.706Z" fill="#D9D9D9"/>
+                  <path d="M153.797 310.706C181.134 338.042 225.455 338.042 252.792 310.706L373 190.497C345.663 163.161 301.342 163.161 274.005 190.497L153.797 310.706Z" fill="#D9D9D9"/>
+                  <path d="M466.334 381.836C493.671 354.499 493.671 310.177 466.334 282.841L370.875 187.381C357.207 173.713 335.046 173.713 321.378 187.381C307.709 201.05 307.709 223.21 321.378 236.879L466.334 381.836Z" fill="#D9D9D9"/>
+                  <path d="M397.083 523.087C410.752 509.419 410.752 487.258 397.083 473.589L252.126 328.633C224.79 355.969 224.79 400.291 252.126 427.628L347.586 523.087C361.254 536.755 383.415 536.755 397.083 523.087Z" fill="#D9D9D9"/>
+                </svg>
+              </div>
+              <span className="text-[#0D0D14] text-sm font-semibold">Обоюдно</span>
+            </Link>
+            <div className="flex items-center gap-3">
+              <Link to="/deal/new" className="w-8 h-8 bg-[#5048E5] text-white rounded-lg flex items-center justify-center">
+                <Plus size={16} />
+              </Link>
+              <Link to="/profile/me" className="w-8 h-8 rounded-full bg-gradient-to-br from-[#5048E5] to-[#7C3AED] flex items-center justify-center text-[10px] text-white font-bold">
+                {userInitial}
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white border-b border-[#E8E9F0] px-4 md:px-8 h-[68px] flex items-center justify-between sticky top-0 md:static z-10">
             <div>
               <h1 className="text-[#0D0D14] text-lg" style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>
                 Мои сделки
@@ -406,14 +437,14 @@ export function Dashboard() {
             </div>
           </div>
 
-          <div className="p-8">
+          <div className="p-4 md:p-8">
             {notice && (
                 <div className="mb-5 bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4">
                   <p className="text-sm text-amber-800">{notice}</p>
                 </div>
             )}
 
-            <div className="grid grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               {[
                 { label: "Всего сделок", value: deals.length.toString(), icon: FileText, trend: totalDealsTrend, color: "text-[#0D0D14]", iconBg: "bg-[#F7F8FA]", iconColor: "text-[#6B7280]" },
                 { label: "Активных", value: activeCount.toString(), icon: Clock, trend: "в работе", color: "text-blue-600", iconBg: "bg-blue-50", iconColor: "text-blue-600" },
@@ -433,7 +464,7 @@ export function Dashboard() {
               ))}
             </div>
 
-            <div className="flex items-center justify-between gap-4 mb-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
               <div className="flex bg-[#F1F2F6] rounded-xl p-1 gap-0.5">
                 {([
                   { key: "all", label: "Все" },
@@ -454,15 +485,15 @@ export function Dashboard() {
                     </button>
                 ))}
               </div>
-              <div className="flex items-center gap-2">
-                <div className="relative">
+              <div className="flex items-center justify-between sm:justify-start gap-2">
+                <div className="relative flex-1 sm:flex-initial">
                   <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#C4C6D3]" />
                   <input
                       type="text"
                       placeholder="Поиск..."
                       value={search}
                       onChange={e => setSearch(e.target.value)}
-                      className="bg-white border border-[#E8E9F0] rounded-xl pl-8 pr-4 py-2 text-sm text-[#0D0D14] placeholder-[#C4C6D3] focus:outline-none focus:border-[#5048E5] focus:ring-2 focus:ring-[#5048E5]/10 w-48"
+                      className="bg-white border border-[#E8E9F0] rounded-xl pl-8 pr-4 py-2 text-sm text-[#0D0D14] placeholder-[#C4C6D3] focus:outline-none focus:border-[#5048E5] focus:ring-2 focus:ring-[#5048E5]/10 w-full sm:w-48"
                   />
                 </div>
               </div>
@@ -475,51 +506,52 @@ export function Dashboard() {
                     <Link
                         key={deal.id}
                         to={`/deal/${deal.id}`}
-                        className="block bg-white border border-[#E8E9F0] rounded-2xl p-5 hover:border-[#5048E5]/20 hover:shadow-[0_4px_16px_rgba(13,13,20,0.06)] transition-all group relative"
+                        className="block bg-white border border-[#E8E9F0] rounded-2xl p-4 md:p-5 hover:border-[#5048E5]/20 hover:shadow-[0_4px_16px_rgba(13,13,20,0.06)] transition-all group relative"
                     >
-                      <div className="flex items-center gap-4">
-                        <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm shrink-0"
-                            style={{ background: deal.counterpartColor, fontWeight: 600 }}
-                        >
-                          {deal.counterpartInitial}
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <p className="text-sm text-[#0D0D14] truncate" style={{ fontWeight: 500 }}>{deal.title}</p>
-                            <span className={`inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full shrink-0 ${s.bg} ${s.text}`} style={{ fontWeight: 500 }}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${s.dot} ${deal.status === "active" ? "animate-pulse" : ""}`} />
-                              {s.label}
-                        </span>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <div className="flex items-center gap-4 flex-1">
+                          <div
+                              className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm shrink-0"
+                              style={{ background: deal.counterpartColor, fontWeight: 600 }}
+                          >
+                            {deal.counterpartInitial}
                           </div>
-                          <div className="flex items-center gap-3">
-                            <p className="text-xs text-[#8B8FA8]">{deal.role} · {deal.counterpart}</p>
-                            <span className="w-1 h-1 rounded-full bg-[#E8E9F0]" />
-                            <p className="text-xs text-[#8B8FA8]">до {deal.deadline}</p>
+
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-2 mb-1">
+                              <p className="text-sm text-[#0D0D14] truncate font-medium">{deal.title}</p>
+                              <span className={`inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full shrink-0 ${s.bg} ${s.text}`} style={{ fontWeight: 500 }}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${s.dot} ${deal.status === "active" ? "animate-pulse" : ""}`} />
+                                {s.label}
+                          </span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <p className="text-xs text-[#8B8FA8]">{deal.role} · {deal.counterpart}</p>
+                              <span className="w-1 h-1 rounded-full bg-[#E8E9F0]" />
+                              <p className="text-xs text-[#8B8FA8]">до {deal.deadline}</p>
+                            </div>
                           </div>
                         </div>
 
                         {deal.status === "pending_receive" ? (
-                            <div className="flex items-center gap-2 z-20 relative">
+                            <div className="flex items-center gap-2 z-20 relative sm:ml-auto">
                               <button
                                   onClick={(e) => { e.preventDefault(); handleAccept(deal.id); }}
-                                  className="px-4 py-1.5 bg-[#5048E5] text-white text-xs rounded-lg hover:bg-[#4338CA] transition-colors"
-                                  style={{ fontWeight: 500 }}
+                                  className="flex-1 sm:flex-none px-4 py-1.5 bg-[#5048E5] text-white text-xs rounded-lg hover:bg-[#4338CA] transition-colors font-medium"
                               >
                                 Принять
                               </button>
                               <button
                                   onClick={(e) => { e.preventDefault(); handleDecline(deal.id); }}
-                                  className="px-4 py-1.5 bg-[#F7F8FA] border border-[#E8E9F0] text-[#6B7280] text-xs rounded-lg hover:bg-white hover:text-[#0D0D14] transition-colors"
+                                  className="flex-1 sm:flex-none px-4 py-1.5 bg-[#F7F8FA] border border-[#E8E9F0] text-[#6B7280] text-xs rounded-lg hover:bg-white hover:text-[#0D0D14] transition-colors"
                               >
                                 Отклонить
                               </button>
                             </div>
                         ) : (
-                            <>
+                            <div className="flex items-center justify-between sm:justify-end gap-6 sm:ml-auto">
                               {deal.status !== "pending_sent" && (
-                                  <div className="hidden md:block w-24">
+                                  <div className="hidden lg:block w-24">
                                     <div className="flex items-center justify-between mb-1">
                                       <span className="text-[11px] text-[#8B8FA8]">Прогресс</span>
                                       <span className="text-[11px] text-[#0D0D14]" style={{ fontWeight: 500 }}>{deal.progress}%</span>
@@ -533,8 +565,8 @@ export function Dashboard() {
                                   </div>
                               )}
 
-                              <div className="text-right shrink-0">
-                                <p className="text-sm text-[#0D0D14]" style={{ fontWeight: 600 }}>
+                              <div className="text-left sm:text-right shrink-0">
+                                <p className="text-sm text-[#0D0D14] font-semibold">
                                   {deal.amount.toLocaleString("ru-RU")} ₽
                                 </p>
                                 <p className="text-[11px] text-[#8B8FA8]">аванс {deal.prepayment.toLocaleString("ru-RU")} ₽</p>
@@ -546,14 +578,14 @@ export function Dashboard() {
                                       <Video size={12} className="text-[#5048E5]" />
                                     </div>
                                 )}
-                                <div className="w-7 h-7 bg-[#F7F8FA] rounded-lg flex items-center justify-center">
+                                <div className="hidden sm:flex w-7 h-7 bg-[#F7F8FA] rounded-lg items-center justify-center">
                                   <FileText size={12} className="text-[#8B8FA8]" />
                                 </div>
                                 <div className="w-6 h-6 flex items-center justify-center">
                                   <ChevronRight size={14} className="text-[#C4C6D3] group-hover:text-[#8B8FA8] transition-colors" />
                                 </div>
                               </div>
-                            </>
+                            </div>
                         )}
                       </div>
                     </Link>

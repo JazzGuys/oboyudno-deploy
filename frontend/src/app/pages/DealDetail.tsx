@@ -802,11 +802,18 @@ export function DealDetail() {
 
   return (
       <div className="min-h-screen bg-[#F7F8FA] flex">
-        <aside className="w-[220px] bg-white border-r border-[#E8E9F0] flex flex-col min-h-screen sticky top-0 shrink-0">
+        <aside className="hidden lg:flex w-[220px] bg-white border-r border-[#E8E9F0] flex-col min-h-screen sticky top-0 shrink-0">
           <div className="px-5 h-[68px] border-b border-[#E8E9F0] flex items-center">
             <Link to="/" className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-[8px] bg-[#5048E5] flex items-center justify-center shadow-[0_2px_8px_rgba(80,72,229,0.3)]">
-                <img src="/src/app/components/ui/logo.svg" alt="Логотип" className="w-full h-full object-contain" />
+                <svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="720" height="720" transform="matrix(-1 0 0 1 720 0)" fill="#5048E5"/>
+                  <path d="M480 353.723C480 334.393 464.33 318.723 445 318.723H275C255.67 318.723 240 334.393 240 353.723C240 373.053 255.67 388.723 275 388.723H445C464.33 388.723 480 373.053 480 353.723Z" fill="#D9D9D9"/>
+                  <path d="M340.797 516.706C368.134 544.042 412.455 544.042 439.792 516.706L560 396.497C532.663 369.161 488.342 369.161 461.005 396.497L340.797 516.706Z" fill="#D9D9D9"/>
+                  <path d="M153.797 310.706C181.134 338.042 225.455 338.042 252.792 310.706L373 190.497C345.663 163.161 301.342 163.161 274.005 190.497L153.797 310.706Z" fill="#D9D9D9"/>
+                  <path d="M466.334 381.836C493.671 354.499 493.671 310.177 466.334 282.841L370.875 187.381C357.207 173.713 335.046 173.713 321.378 187.381C307.709 201.05 307.709 223.21 321.378 236.879L466.334 381.836Z" fill="#D9D9D9"/>
+                  <path d="M397.083 523.087C410.752 509.419 410.752 487.258 397.083 473.589L252.126 328.633C224.79 355.969 224.79 400.291 252.126 427.628L347.586 523.087C361.254 536.755 383.415 536.755 397.083 523.087Z" fill="#D9D9D9"/>
+                </svg>
               </div>
               <span className="text-[#0D0D14] text-sm" style={{ fontWeight: 600 }}>Обоюдно</span>
             </Link>
@@ -823,7 +830,14 @@ export function DealDetail() {
         </aside>
 
         <main className="flex-1 min-w-0">
-          <div className="bg-white border-b border-[#E8E9F0] px-8 h-[68px] flex items-center justify-between sticky top-0 z-10">
+          <div className="lg:hidden bg-white border-b border-[#E8E9F0] px-4 h-[60px] flex items-center justify-between sticky top-0 z-20">
+            <Link to="/dashboard" className="flex items-center gap-2 text-[#8B8FA8]">
+              <ArrowLeft size={18} />
+              <span className="text-[#0D0D14] text-sm font-semibold">Сделка</span>
+            </Link>
+          </div>
+
+          <div className="bg-white border-b border-[#E8E9F0] px-4 md:px-8 h-auto md:h-[68px] py-4 md:py-0 flex flex-col md:flex-row md:items-center justify-between sticky top-0 md:static z-10 gap-4">
             <div className="flex items-center gap-3">
               <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm shrink-0"
@@ -831,49 +845,49 @@ export function DealDetail() {
               >
                 {deal.counterpartInitial}
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-[#0D0D14] text-base" style={{ fontWeight: 600 }}>{deal.title}</h1>
-                  <span className={`inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded-full ${s.bg} ${s.text}`} style={{ fontWeight: 500 }}>
-                  <span className={`w-1.5 h-1.5 rounded-full ${s.dot} ${deal.status === "active" ? "animate-pulse" : ""}`} />
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h1 className="text-[#0D0D14] text-sm md:text-base truncate font-semibold">{deal.title}</h1>
+                  <span className={`inline-flex items-center gap-1.5 text-[10px] md:text-[11px] px-2 py-0.5 md:py-1 rounded-full ${s.bg} ${s.text}`} style={{ fontWeight: 500 }}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${s.dot} ${deal.status === "active" ? "animate-pulse" : ""}`} />
                     {s.label}
-                </span>
+                  </span>
                 </div>
-                <p className="text-xs text-[#8B8FA8]">ID {deal.id} · Создана {deal.date}</p>
+                <p className="text-[10px] md:text-xs text-[#8B8FA8] truncate">ID {deal.id} · {deal.date}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={handleCopyLink}
-                className="flex items-center gap-1.5 text-xs text-[#6B7280] hover:text-[#0D0D14] px-3 py-2 bg-[#F7F8FA] border border-[#E8E9F0] rounded-xl transition-all hover:border-[#5048E5]/20"
+                className="flex-1 md:flex-none flex items-center justify-center gap-1.5 text-[11px] md:text-xs text-[#6B7280] hover:text-[#0D0D14] px-3 py-2 bg-[#F7F8FA] border border-[#E8E9F0] rounded-xl transition-all hover:border-[#5048E5]/20"
               >
                 <Copy size={13} />
-                Скопировать ссылку
+                <span className="md:inline">Ссылка</span>
               </button>
             </div>
           </div>
 
-          <div className="p-8 grid grid-cols-3 gap-6">
-            <div className="col-span-2 space-y-5">
+          <div className="p-4 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 space-y-5">
               {actionMessage && (
                   <div className="bg-blue-50 border border-blue-100 rounded-2xl px-5 py-3">
                     <p className="text-sm text-blue-800">{actionMessage}</p>
                   </div>
               )}
               {deal.status === "pending_receive" && (
-                  <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4 flex items-center justify-between">
+                  <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <p className="text-sm text-amber-900" style={{ fontWeight: 600 }}>Ожидает вашего подтверждения</p>
+                      <p className="text-sm text-amber-900 font-semibold">Ожидает вашего подтверждения</p>
                       <p className="text-xs text-amber-700">Внимательно изучите условия и видео ТЗ перед согласием.</p>
                     </div>
-                    <div className="flex gap-2">
-                      <button onClick={handleDecline} className="px-4 py-2 bg-white text-amber-700 border border-amber-200 rounded-xl text-sm hover:bg-amber-100 transition-colors">Отклонить</button>
-                      <button onClick={handleAccept} className="px-4 py-2 bg-[#5048E5] text-white rounded-xl text-sm hover:bg-[#4338CA] transition-colors shadow-sm">Принять сделку</button>
+                    <div className="flex flex-wrap gap-2">
+                      <button onClick={handleDecline} className="flex-1 sm:flex-none px-4 py-2 bg-white text-amber-700 border border-amber-200 rounded-xl text-sm hover:bg-amber-100 transition-colors">Отклонить</button>
+                      <button onClick={handleAccept} className="flex-1 sm:flex-none px-4 py-2 bg-[#5048E5] text-white rounded-xl text-sm hover:bg-[#4338CA] transition-colors shadow-sm">Принять</button>
                       <button
                         onClick={() => setEditMode((prev) => !prev)}
-                        className="px-4 py-2 bg-white text-[#0D0D14] border border-[#E8E9F0] rounded-xl text-sm hover:bg-[#F7F8FA] transition-colors"
+                        className="w-full sm:w-auto px-4 py-2 bg-white text-[#0D0D14] border border-[#E8E9F0] rounded-xl text-sm hover:bg-[#F7F8FA] transition-colors"
                       >
-                        {editMode ? "Скрыть правки" : "Изменить условия"}
+                        {editMode ? "Скрыть" : "Изменить условия"}
                       </button>
                     </div>
                   </div>
