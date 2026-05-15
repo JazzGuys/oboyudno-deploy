@@ -11,7 +11,7 @@ services:
       - ASPNETCORE_URLS=http://0.0.0.0:5021
       - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=oboyudno;Username=admin;Password=admin
       - S3__ServiceUrl=http://minio:9000
-      - S3__PublicUrl=http://localhost:9000
+      - S3__PublicUrl=https://o6oyudno.tech
       - S3__AccessKey=admin
       - S3__SecretKey=admin123
       - S3__BucketName=videos
